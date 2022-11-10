@@ -25,7 +25,7 @@ function App() {
 
   useEffect(() => {
     if (localStorage.getItem('accessToken')) {
-      axios.get('http://localhost:4000/users/', {
+      axios.get('https://tma-server.onrender.com/users/', {
         headers: {
           accessToken: localStorage.getItem('accessToken')
         }
@@ -45,7 +45,7 @@ function App() {
   }, [])
 
   const handleRegister = (username, password, email, confirmPassword) => {
-    axios.post('http://localhost:4000/users/signup', { username, password, email, confirmPassword }).then(res => {
+    axios.post('https://tma-server.onrender.com/users/signup', { username, password, email, confirmPassword }).then(res => {
       if (res.data.error) {
         toast.error(res.data.error)
       }
@@ -58,7 +58,7 @@ function App() {
 
   const handleLogin = (e, username, password) => {
     e.preventDefault()
-    axios.post('http://localhost:4000/users/signin', { username, password }).then(res => {
+    axios.post('https://tma-server.onrender.com/users/signin', { username, password }).then(res => {
       console.log(res.data)
       if (res.data.error) {
         toast.error(res.data.error);
@@ -78,7 +78,7 @@ function App() {
       poster_path: movie.poster_path
     }
     console.log(authState.user.uid)
-    axios.put('http://localhost:4000/users/movie', { movie: movieParam, userId: authState.user.uid }).then(res => {
+    axios.put('https://tma-server.onrender.com/users/movie', { movie: movieParam, userId: authState.user.uid }).then(res => {
       console.log(res.data)
       navigate(0);
     })

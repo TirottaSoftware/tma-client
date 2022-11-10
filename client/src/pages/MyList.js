@@ -10,7 +10,7 @@ function MyList() {
 
     useEffect(() => {
         console.log("User ID: ", authState?.user.uid)
-        axios.get('http://localhost:4000/movies/' + authState?.user.uid).then((res) => {
+        axios.get('https://tma-server.onrender.com/movies/' + authState?.user.uid).then((res) => {
             setMovies(res.data)
         })
     }, [])

@@ -17,7 +17,7 @@ function Movie({ add, uid }) {
     const recommendationsApi = `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${process.env.REACT_APP_API_KEY}&append_to_response=videos`;
 
     useEffect(() => {
-        axios.get(`http://localhost:4000/movies/list/${uid}/${id}`)
+        axios.get(`https://tma-server.onrender.com/movies/list/${uid}/${id}`)
             .then(res => {
                 setInList(res.data)
             })

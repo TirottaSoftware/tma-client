@@ -15,7 +15,7 @@ function Profile({ uid }) {
     const [newPasswordConfirm, setNewPasswordConfirm] = useState('');
 
     useEffect(() => {
-        axios.get('http://localhost:4000/profile/' + uid).then(res => {
+        axios.get('https://tma-server.onrender.com/profile/' + uid).then(res => {
             setProfile(res.data);
             setUsername(res.data.name);
             setEmail(res.data.email)
@@ -26,7 +26,7 @@ function Profile({ uid }) {
     const handlePasswordUpdate = (e) => {
         e.preventDefault();
         console.log(password, newPassword, newPasswordConfirm)
-        axios.put('http://localhost:4000/profile/updatePassword', { uid, oldPassword: password, newPassword, newPasswordConfirm })
+        axios.put('https://tma-server.onrender.com/profile/updatePassword', { uid, oldPassword: password, newPassword, newPasswordConfirm })
             .then(res => {
                 console.log(res.data)
                 if (res.data.error) {
@@ -43,7 +43,7 @@ function Profile({ uid }) {
         console.log(username, email, profilePicture)
 
         // Send a PUT request to API
-        axios.put('http://localhost:4000/profile/' + uid, { username, email, profilePicture }).then(res => {
+        axios.put('https://tma-server.onrender.com/profile/' + uid, { username, email, profilePicture }).then(res => {
             console.log(res.data)
             if (res.data.error) {
                 toast.error(res.data.error)
